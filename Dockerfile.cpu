@@ -1,11 +1,11 @@
 FROM ubuntu:14.04
 
-MAINTAINER Sai Soundararaj <saip@outlook.com>
+MAINTAINER Rob Smith <rmsmith@outlook.com>
 
 ARG THEANO_VERSION=rel-0.8.2
-ARG TENSORFLOW_VERSION=0.12.1 
+ARG TENSORFLOW_VERSION=1.1.0 
 ARG TENSORFLOW_ARCH=cpu
-ARG KERAS_VERSION=1.2.0
+ARG KERAS_VERSION=2.0.4
 ARG LASAGNE_VERSION=v0.1
 ARG TORCH_VERSION=latest
 ARG CAFFE_VERSION=master
@@ -218,6 +218,9 @@ RUN git clone --depth 1 https://github.com/opencv/opencv.git /root/opencv && \
 	ldconfig && \
 	echo 'ln /dev/null /dev/raw1394' >> ~/.bashrc
 
+
+# Update pip
+RUN pip install --upgrade pip
 
 # Set up notebook config
 COPY jupyter_notebook_config.py /root/.jupyter/
